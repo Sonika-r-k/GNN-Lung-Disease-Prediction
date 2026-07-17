@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>AI Lung Dashboard</title>
+
+<style>
+body{
+margin:0;
+font-family:Arial;
+background:#e6f0ff;
+}
+
+.header{
+background:#0a4fa3;
+color:white;
+padding:15px;
+text-align:center;
+font-size:22px;
+}
+
+.grid{
+display:grid;
+grid-template-columns: repeat(3, 1fr);
+gap:20px;
+padding:20px;
+}
+
+.card{
+background:white;
+padding:20px;
+border-radius:10px;
+text-align:center;
+}
+
+.card img{
+width:100%;
+border-radius:10px;
+}
+
+/* FINAL RESULT BOX */
+.result-box{
+background:#0a4fa3;
+color:white;
+font-size:22px;
+font-weight:bold;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+}
+</style>
+</head>
+
+<body>
+
+<div class="header">
+📊 AI Lung Disease Detection Dashboard
+</div>
+
+<div class="grid">
+
+<!-- Prediction -->
+<div class="card">
+<h3>Prediction</h3>
+<p>Prediction Generated</p>
+<a href="/"><button>Upload New</button></a>
+</div>
+
+<!-- Input -->
+<div class="card">
+<h3>Input Image</h3>
+<img src="{{ url_for('static', filename=image_path) }}">
+</div>
+
+<!-- Heatmap -->
+<div class="card">
+<h3>Heatmap</h3>
+<img src="{{ url_for('static', filename=heatmap_path) }}">
+</div>
+
+<!-- Loss -->
+<div class="card">
+<h3>Loss</h3>
+<img src="{{ url_for('static', filename=loss_graph) }}">
+</div>
+
+<!-- Accuracy -->
+<div class="card">
+<h3>Accuracy</h3>
+<img src="{{ url_for('static', filename=acc_graph) }}">
+</div>
+
+<!-- ⭐ FINAL DIAGNOSIS (REPLACED TRAINING) -->
+<div class="card result-box">
+<h3>Final Diagnosis</h3>
+<p>{{ prediction }}</p>
+<p>{{ confidence }}</p>
+</div>
+
+</div>
+
+</body>
+</html>
